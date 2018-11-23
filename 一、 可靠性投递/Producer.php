@@ -6,9 +6,17 @@
  */
 
 
-require_once __DIR__ . '/../../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 use \PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
+
+/**
+ * confirm消息确认机制
+ *
+ * 消息的确认是指生产者投递消息后，如果Broker接收到消息，则会给生产者一个应答。
+ * 生产者进行接收应答，用来确认这条消息是否正常的发送到Broker，
+ * 这种方式也是消息可靠性投递的核心保障
+ **/
 
 //1.创建连接
 $connection = new AMQPStreamConnection('192.168.10.10', 5672, 'guest', 'guest');
