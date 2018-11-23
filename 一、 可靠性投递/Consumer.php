@@ -16,10 +16,7 @@ $exchange = 'reliable_exchange';
 $routing_key = 'reliable_key';
 
 $channel->exchange_declare($exchange,'topic',false,true,false);
-
 $channel->queue_declare($queue_name,false,true,false,false,false);
-
-
 $channel->queue_bind($queue_name,$exchange,$routing_key);
 
 
@@ -30,11 +27,10 @@ echo '----------------------';
     echo "routing_key    ". $message->delivery_info['routing_key'].PHP_EOL;
     echo "exchange   ". $message->delivery_info['exchange'].PHP_EOL;
     echo "consumer_tag    ". $message->delivery_info['consumer_tag'].PHP_EOL;
-//    $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
+    $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
 };
 
 
-// 提取callback 到单独的一个类中
 $channel->basic_consume($queue_name,'',false,false,false,false,$callback);
 
 while (count($channel->callbacks)){

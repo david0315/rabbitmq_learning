@@ -29,22 +29,6 @@ $channel->set_nack_handler(
     }
 );
 
-//$returnListener = function (
-//    $replyCode,
-//    $replyText,
-//    $exchange,
-//    $routingKey,
-//    $message
-//){
-//    $GLOBALS['wait'] = false;
-//    echo "return: ",
-//    $replyCode, "\n",
-//    $replyText, "\n",
-//    $exchange, "\n",
-//    $routingKey, "\n",
-//    $message->body, "\n";
-//};
-//$channel->set_return_listener($returnListener);
 //3 确定消息的投递模式 ：消息确认模式
 $channel->confirm_select();
 
