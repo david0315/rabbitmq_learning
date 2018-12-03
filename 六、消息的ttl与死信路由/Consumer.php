@@ -21,8 +21,9 @@ use PhpAmqpLib\Message\AMQPMessage;
  * ③. 队列的长度限制满了。排在前面的消息会被丢弃或者扔到死信路由上。
  *
  * Dead Letter Exchange其实就是一种普通的exchange，和创建其他exchange没有两样。
- * 只是在某一个设置Dead Letter Exchange的队列中有消息过期了，会自动触发消息的转发，
+ * (延迟队列)只是在某一个设置Dead Letter Exchange的队列中有消息过期了，会自动触发消息的转发，
  * 发送到Dead Letter Exchange中去。
+ *
  */
 
 //1.创建连接
